@@ -1,9 +1,10 @@
-export interface Document {
+export interface Doc {
+    id: number;
     type: string;
     title: string;
     position: number;
 }
 
 export interface CardProps {
-    document: Document;
+    document: Doc;
 }
