@@ -38,7 +38,7 @@ const Card: React.FC<Doc> = ({ id, title }) => {
     <div className="" ref={setNodeRef} {...attributes} {...listeners} style={styles}>
       <div style={{ height: "300px" }}>
         {isLoading && <Spinner />}
-        <img src={`https://picsum.photos/id/${id + 10}/300/300`} alt={title} onLoad={handleImageLoad} onMouseDown={handleShowModal} style={{ cursor: "pointer" }}
+        <img src={`https://picsum.photos/id/${id + 10}/300/300`} alt={title} onLoad={handleImageLoad} onDoubleClick={handleShowModal} style={{ cursor: "pointer" }}
         />
       </div>
       <div>{title}</div>
