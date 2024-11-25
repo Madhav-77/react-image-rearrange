@@ -1,14 +1,14 @@
-import { Doc } from "../../interfaces";
+import { ImageDatatype } from "../../interfaces";
 import Card from "../cards/cards";
 import "./grid.css";
 
-export const Grid: React.FC<{ data: Doc[] }> = ({ data }) => {
+export const Grid: React.FC<{ data: ImageDatatype[] }> = ({ data }) => {
 
     return (    
-        <div className="row text-center justify-content-center">
-            {data.map((item: Doc) => (
+        <div className="row text-center justify-content-center m-0">
+            {data.map((item: ImageDatatype) => (
                 <div className="col-4" key={item.id}>
-                    <Card id={item.id} title={item.title} type={item.type} position={item.position}></Card>
+                    <Card data={item}></Card>
                 </div>
             ))}
         </div>

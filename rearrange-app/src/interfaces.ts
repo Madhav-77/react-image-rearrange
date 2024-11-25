@@ -1,10 +1,6 @@
-export interface Doc {
+export interface ImageDatatype {
     id: number;
     type: string;
     title: string;
     position: number;
-}
-
-export interface CardProps {
-    document: Doc;
 }
