@@ -6,6 +6,7 @@ import { rectSwappingStrategy, SortableContext } from '@dnd-kit/sortable';
 import { getImages, updateImagePosition } from './services/imageService';
 import { ImageDatatype } from './interfaces';
 import { Spinner } from 'react-bootstrap';
+import { DragEndEvent } from '@dnd-kit/core';
 
 function App() {
   const [imageData, setImageData] = useState<ImageDatatype[]>([]); //stores image data, gets updated on dragging
@@ -66,7 +67,7 @@ function App() {
   };
 
   // to handle drag end event, update new dragged positions to imageData 
-  const handleDragEnd = (event) => {
+  const handleDragEnd = (event: DragEndEvent) => {
     const { active, over } = event;
     if (!over || active.id === over.id) return;
 
