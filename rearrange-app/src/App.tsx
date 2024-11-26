@@ -100,7 +100,7 @@ function App() {
     });
   };
 
-  const displayTime = lastSaveTime ? elapsedTime : 'Never';
+  const displayTime = lastSaveTime ? elapsedTime + ' seconds' : 'Never';
 
   return (
     <>
