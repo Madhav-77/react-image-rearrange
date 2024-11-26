@@ -1,50 +1,79 @@
-# React + TypeScript + Vite
+# React Image Rearrange app Frontend
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A frontend application built using React and Vite for drag-and-drop interactions, connected to a Python Starlette backend for managing image data. The app efficiently handles frequent save operations and displays the time elapsed since the last save.
 
-Currently, two official plugins are available:
+### Deployed URL
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+https://react-image-rearrange-new.vercel.app/
 
-## Expanding the ESLint configuration
+## Table of Contents
+- [Project Overview](#project-overview)
+- [Project setup](#setting-up-the-project)
+- [API Endpoints](#api-endpoints)
+- [Database Information](#database-information)
+- [Contributors](#contributors)
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
+## Project Overview
 
-- Configure the top-level `parserOptions` property like this:
+This is the frontend interface for the Image Rearrange application, built with React and Vite. It uses DnD Kit for drag-and-drop interactions. It connects to a backend API to manage image data and positions.
 
-```js
-export default tseslint.config({
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
-})
-```
+[![Version](https://img.shields.io/badge/version-1.0.0.alpha.1-blue.svg)](https://semver.org)
 
-- Replace `tseslint.configs.recommended` to `tseslint.configs.recommendedTypeChecked` or `tseslint.configs.strictTypeChecked`
-- Optionally add `...tseslint.configs.stylisticTypeChecked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and update the config:
+### Key Features:
+- **Drag and Drop**: Built using dnd-kit for drag-and-drop functionality.
+- **API Integration**: Calls the backend API to fetch and save image data via a service layer.
+- **Efficient Saving**:
+  - Automatically saves changes every 5 seconds.
+  - Only triggers save API calls when changes are detected.
+- **Live Timer**: Displays the time elapsed since the last successful save.
+- **Modern React**: Utilizes React hooks (useState, useEffect, useRef, etc.) for state and lifecycle management.
 
-```js
-// eslint.config.js
-import react from 'eslint-plugin-react'
+---
 
-export default tseslint.config({
-  // Set the react version
-  settings: { react: { version: '18.3' } },
-  plugins: {
-    // Add the react plugin
-    react,
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended rules
-    ...react.configs.recommended.rules,
-    ...react.configs['jsx-runtime'].rules,
-  },
-})
-```
+## Setting Up the Project
+
+### Tech stack
+- **Frontend Framework**: React
+- **Drag-and-Drop Library**: DnD-kit
+- **State Management**: React hooks (useState, useEffect, useRef)
+- **Deployment**: Vercel
+
+### Installation
+**Prerequisites**:
+- Node.js v20+
+- Yarn or npm
+
+**Clone the repository**:
+
+    git clone https://github.com/Madhav-77/react-image-rearrange.git
+    
+**Create a Virtual Environment**:
+    
+    python3 -m venv venv
+    use venv\Scripts\activate # For Windows
+    
+**Install Dependencies**:
+
+    npm install
+    # or
+    yarn install
+
+**Start the development server**:
+
+    npm run dev
+    # or
+    yarn dev
+
+**Environment Variables**:
+
+Set up the environment variables in a .env file in the root directory.
+
+    VITE_API_BASE_URL=https://python-image-rearrange-ofkj4d47u-madhav-trivedis-projects.vercel.app/api
+
+**Run the Development Server**:
+
+    uvicorn app.main:app --reload
+
+## Contributors
+
+- [@madhavtrivedi](https://www.madhavtrivedi.com/)
