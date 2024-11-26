@@ -108,7 +108,7 @@ function App() {
         <div className="">
           <div className='text-center'>
             <h1>Zania's rearrange app</h1>
-            <span>Last saved: {displayTime} seconds</span>
+            <span>Last saved: {displayTime}</span>
           </div>
           {isAPILoading ? (
             <div className='text-center'>
