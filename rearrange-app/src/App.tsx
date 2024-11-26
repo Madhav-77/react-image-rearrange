@@ -14,6 +14,7 @@ function App() {
   const [lastSaveTime, setLastSaveTime] = useState<number | null>(null);
   const initialImageData = useRef<ImageDatatype[]>([]); //stores initial image data, does not update on dragging
   const [error, setError] = useState<string | null>(null);
+  const [elapsedTime, setElapsedTime] = useState(0);
 
   // for calling save API every 5 seconds, only if data is modified
   useEffect(() => {
@@ -29,6 +30,18 @@ function App() {
   useEffect(() => {
     fetchData();
   }, []);
+
+  // if lastSaveTime is available, this calculates the time lapsed since lastSaveTime
+  useEffect(() => {
+    if (lastSaveTime) {
+      const interval = setInterval(() => {
+        const seconds = Math.floor((Date.now() - lastSaveTime) / 1000);
+        setElapsedTime(seconds);
+      }, 1000);
+
+      return () => clearInterval(interval);
+    }
+  }, [lastSaveTime]);
 
   // getImageData api call
   const fetchData = () => {
@@ -87,14 +100,7 @@ function App() {
     });
   };
 
-  // if lastSaveTime is available, this calculates the time lapsed since lastSaveTime
-  const getElapsedTime = () => {
-    if (lastSaveTime) {
-      const seconds = Math.floor((Date.now() - lastSaveTime) / 1000);
-      return `${seconds} second${seconds !== 1 ? 's' : ''} ago`;
-    }
-    return 'Never';
-  };
+  const displayTime = lastSaveTime ? elapsedTime : 'Never';
 
   return (
     <>
@@ -102,7 +108,7 @@ function App() {
         <div className="">
           <div className='text-center'>
             <h1>Zania's rearrange app</h1>
-            <span>Last saved: {getElapsedTime()}</span>
+            <span>Last saved: {displayTime} seconds</span>
           </div>
           {isAPILoading ? (
             <div className='text-center'>
