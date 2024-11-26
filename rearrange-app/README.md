@@ -74,6 +74,26 @@ Set up the environment variables in a .env file in the root directory.
 
     uvicorn app.main:app --reload
 
+### Docker Setup
+
+**Prerequisites**:
+- Docker and Docker Compose installed on your system.
+
+**Steps**:
+
+- Build and start the containers:
+    ```
+    docker-compose up    
+    ```
+- The app will be accessible at:
+  - Python API: http://localhost:8000
+  - React frontend: http://localhost:8080
+
+- To stop the containers:
+    ```
+    docker-compose down    
+    ```
+
 ## Contributors
 
 - [@madhavtrivedi](https://www.madhavtrivedi.com/)
